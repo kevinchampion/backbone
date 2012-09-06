@@ -1,7 +1,12 @@
 Backbone Experiment
 ===================
 
-Experiment to build something using backbone.js and a number of other tools. Such as:
+Experiment to build something using backbone.js and a number of other tools.
+
+Tools
+-----
+
+These tools are used in this project.
 
 * [Backbone](http://documentcloud.github.com/backbone/)
 * [CoffeeScript](http://coffeescript.org/)
