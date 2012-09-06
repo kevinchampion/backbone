@@ -6,13 +6,107 @@
     <title>Awesome restaurants</title>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" media="screen" href="/css/bootstrap.css" >
+    <script type="text/mustache" id="restaurant-template">
+      <tr>
+        <td>{{ name }}</td>
+        <td>{{ postcode }}</td>
+        <td>{{ rating }}</td>
+        <td>
+          <i class="icon-remove remove" id="{{ id }}"></i>
+        </td>
+      </tr>
+    </script>
     <script type="text/javascript" src="/javascript/vendor/jquery.min.js"></script>
     <script type="text/javascript" src="/javascript/vendor/underscore.min.js"></script>
     <script type="text/javascript" src="/javascript/vendor/backbone.min.js"></script>
+    <script type="text/javascript" src="/javascript/vendor/backbone_rails_sync.js"></script>
     <script type="text/javascript" src="/javascript/vendor/backbone-validations.js"></script>
     <script type="text/javascript "src="/javascript/vendor/hogan.js"></script>
+    <script type="text/javascript" src="/javascript/app.js"></script>
+    <script type="text/javascript" src="/javascript/models/restaurant.js"></script>
+    <script type="text/javascript" src="/javascript/views/restaurants.js"></script>
+    <script type="text/javascript" src="/javascript/views/restaurant_form.js"></script>
   </head>
   <body>
-    It works!
+  <script type="text/javascript">
+    restaurants_data = [
+      {
+        id: 0,
+        name: 'Ritz',
+        postcode: 'N112TP',
+        rating: 5
+      },
+      {
+        id: 1,
+        name: 'Astoria',
+        postcode: 'EC1E4R',
+        rating: 3
+      },
+      {
+        id: 2,
+        name: 'Waldorf',
+        postcode: 'WE43F2',
+        rating: 4
+      }
+    ];
+    $(document).ready(function(){
+      restaurants = new Gourmet.Collections.RestaurantsCollection(restaurants_data);
+      restaurants_view = new Gourmet.Views.RestaurantsView({
+        collection: restaurants,
+        el: '#restaurants tbody'
+      });
+      restaurant_form_view = new Gourmet.Views.RestaurantForm({
+        el: '#restaurant-form',
+        collection: restaurants
+      });
+    });
+  </script>
+
+  <div class="container">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a href="#" class="brand">Awesome restaurants</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="span4">
+          <form action="#" class="well form-horizontal" id="restaurant-form">
+            <div class="control-group">
+              <label for="restaurant_name">Name</label>
+              <input type="text" name="restaurant[name]" id="restaurant_name" />
+              <span class="help-block">Required</span>
+            </div>
+            <div class="control-group">
+              <label for="restaurant_rating">Rating</label>
+              <input type="text" name="restaurant[rating]" id="restaurant_rating" />
+              <span class="help-block">Required, only a number between 1 and 5</span>
+            </div>
+            <div class="control-group">
+              <label for="restaurant_postcode">Postcode</label>
+              <input type="text" name="restaurant[postcode]" id="restaurant_postcode" />
+              <span class="help-block">Required</span>
+            </div>
+            <input type="button" class="btn btn-primary" value="Save" id="save"/>
+          </form>
+        </div>
+        <div class="span8">
+          <table class="table" id="restaurants">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Postcode</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
   </body>
 </html>

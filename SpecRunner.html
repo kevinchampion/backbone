@@ -8,17 +8,41 @@
   <link rel="stylesheet" type="text/css" href="/javascript/vendor/jasmine-1.2.0/jasmine.css">
   <script type="text/javascript" src="/javascript/vendor/jasmine-1.2.0/jasmine.js"></script>
   <script type="text/javascript" src="/javascript/vendor/jasmine-1.2.0/jasmine-html.js"></script>
+  <script type="text/javascript" src="/javascript/vendor/sinon.js"></script>
+
+  <!-- templates -->
+  <script type="text/mustache" id="restaurant-template">
+    <tr>
+      <td>{{ name }}</td>
+      <td>{{ postcode }}</td>
+      <td>{{ rating }}</td>
+      <td>
+        <i class="icon-remove remove" id="{{ id }}"></i>
+      </td>
+    </tr>
+  </script>
 
   <!-- vendor js -->
   <script type="text/javascript" src="/javascript/vendor/jquery.min.js"></script>
   <script type="text/javascript" src="/javascript/vendor/underscore.min.js"></script>
   <script type="text/javascript" src="/javascript/vendor/backbone.min.js"></script>
+  <script type="text/javascript" src="/javascript/vendor/backbone_rails_sync.js"></script>
   <script type="text/javascript" src="/javascript/vendor/backbone-validations.js"></script>
   <script type="text/javascript "src="/javascript/vendor/hogan.js"></script>
   <script type="text/javascript" src="/javascript/vendor/jasmine-jquery.js"></script>
 
+<!-- lib -->
+<script type="text/javascript" src="/javascript/app.js"></script>
+<script type="text/javascript" src="/javascript/models/restaurant.js"></script>
+<script type="text/javascript" src="/javascript/views/restaurants.js"></script>
+<script type="text/javascript" src="/javascript/views/restaurant_form.js"></script>
+
 <!-- specs -->
 <script type="text/javascript" src="/javascript/spec/toolchain_spec.js"></script>
+<script type="text/javascript" src="/javascript/spec/app_spec.js"></script>
+<script type="text/javascript" src="/javascript/spec/models/restaurant_spec.js"></script>
+<script type="text/javascript" src="/javascript/spec/views/restaurants_spec.js"></script>
+<script type="text/javascript" src="/javascript/spec/views/restaurant_form_spec.js"></script>
 
   <script type="text/javascript">
     (function() {
